@@ -93,7 +93,7 @@ def main():
     st.markdown("""
         <style>
             .circle-logo {
-                width: 80px;  /* Adjust size as needed */
+                width: 80px; 
                 height: 80px;
                 border-radius: 50%;
                 background-color: #D3D3D3;  /* Light gray background */
@@ -114,9 +114,9 @@ def main():
         st.markdown(f'<div class="circle-logo"><img src="{logo_url}" alt="Logo"></div>', unsafe_allow_html=True)
 
     st.write(f"#### {company.info.get('shortName', selected_ticker)}")
-    st.write("Les données ci-dessus montrent les prix des actions en dollars pour les derniers jours.")
+    st.write("Les données ci-dessus montrent les prix des actions en dollars pour les derniers jours. Les valeurs maximales sont mises en surbrillance.")
     st.write(" ")
-    st.dataframe(data.style.highlight_max(axis=0))
+    st.dataframe(data.style.highlight_max(color='#8b76e9', axis=0))
     st.write("Le graphique suivant montre l'évolution des prix des actions en dollars sur les deux dernières années")
     st.line_chart(historical_data['Close'], color="#ea2071")
 
