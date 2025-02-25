@@ -3,8 +3,6 @@ import yfinance as yf
 from datetime import datetime
 from PIL import Image
 
-
-
 # Function to format balance with space as thousands separator and comma as decimal
 def format_balance(balance):
     return "{:,.2f}".format(balance).replace(",", " ").replace(".", ",")
@@ -59,7 +57,11 @@ def main():
     st.write("### Vos cartes bancaires:")
     display_card_slider()
 
-    # Your additional code
+    st.write("***")
+
+    # Display investment opportunities
+    st.write("### Explorez les opportunités d'investissement")
+
     logo_urls = {
         "AAPL": "https://companieslogo.com/img/orig/AAPL-bf1a4314.png?t=1720244490&download=true",
         "NVDA": "https://companieslogo.com/img/orig/NVDA-220e1e03.png?t=1722952498&download=truex",
@@ -70,11 +72,11 @@ def main():
 
     tickers = ["AAPL", "NVDA", "MSFT", "AMZN", "GOOG"]
 
-    selected_ticker = st.selectbox("Select a Ticker", tickers)
+    selected_ticker = st.selectbox("Sélectionnez un symbole boursier", tickers)
 
     company = yf.Ticker(selected_ticker)
 
-    data = yf.download(selected_ticker, period='3d')
+    data = yf.download(selected_ticker, period='8d')
     data.index = data.index.date
     data.drop('Volume', axis=1, inplace=True)
 
@@ -107,6 +109,9 @@ def main():
         st.markdown(f'<div class="circle-logo"><img src="{logo_url}" alt="Logo"></div>', unsafe_allow_html=True)
 
     st.write(f"### {company.info.get('shortName', selected_ticker)}")
+    st.write("Les données ci-dessus montrent les prix de clôture des actions en dollars pour les derniers jours.")
+
+
     st.dataframe(data.style.highlight_max(axis=0))
     st.line_chart(historical_data['Close'], color="#ea2071")
 
