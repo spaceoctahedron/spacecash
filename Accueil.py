@@ -1,11 +1,8 @@
 import streamlit as st
-import locale
 from datetime import datetime
 from PIL import Image
 
-# Set the locale to French (France) for correct number formatting
-locale.setlocale(locale.LC_NUMERIC, 'fr_FR.UTF-8')
-
+# Function to format balance with space as thousands separator and comma as decimal
 def format_balance(balance):
     # Format the balance with spaces as thousands separators and commas as decimals
     return "{:,.2f}".format(balance).replace(",", " ").replace(".", ",")
