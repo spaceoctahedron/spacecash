@@ -38,11 +38,11 @@ def display_card_slider():
 # Main function to render the page
 def main():
     st.set_page_config(page_title="Space Cash", page_icon="📱", layout="wide")
-
     current_datetime = datetime.now().strftime("%d %B %Y %H:%M")
-
-    # Page title and introduction
     st.logo("assets/logo.png")
+    # Page title and introduction
+    
+    st.image("assets/stars.gif", use_container_width=True)
     st.markdown('<h1 style="color: #8b76e9;">SPACE CASH</h1>', unsafe_allow_html=True)
     st.write("### Bienvenue !")
     st.write(f"Dernière connexion: {current_datetime}")
