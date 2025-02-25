@@ -42,7 +42,8 @@ def main():
     current_datetime = datetime.now().strftime("%d %B %Y %H:%M")
 
     # Page title and introduction
-    st.markdown('<h1 style="color: #8b76e9;">Space Cash</h1>', unsafe_allow_html=True)
+    st.logo("assets/logo.png")
+    st.markdown('<h1 style="color: #8b76e9;">SPACE CASH</h1>', unsafe_allow_html=True)
     st.write("### Bienvenue !")
     st.write(f"Dernière connexion: {current_datetime}")
     st.write("***")
@@ -60,18 +61,22 @@ def main():
     st.write("***")
 
     # Display investment opportunities
-    st.write("### Explorez les opportunités d'investissement")
+    st.write("### Restez informé des marchés boursiers mondiaux")
 
     logo_urls = {
         "AAPL": "https://companieslogo.com/img/orig/AAPL-bf1a4314.png?t=1720244490&download=true",
         "NVDA": "https://companieslogo.com/img/orig/NVDA-220e1e03.png?t=1722952498&download=truex",
         "MSFT": "https://companieslogo.com/img/orig/MSFT-a203b22d.png?t=1722952497&download=true",
         "AMZN": "https://companieslogo.com/img/orig/AMZN-e9f942e4.png?t=1722944001&download=true",
+        
         "GOOG": "https://companieslogo.com/img/orig/GOOG-0ed88f7c.png?t=1722952493&download=true",
+        "2222.SR": "https://companieslogo.com/img/orig/2222.SR-99009d53.png?t=1720244490&download=true",
+        "META": "https://companieslogo.com/img/orig/META-4767da84.png?t=1720244492&download=true",
+        "BRK-B": "https://companieslogo.com/img/orig/BRK-B-25f11589.png?t=1722006061&download=true",
+        "TSM": "https://companieslogo.com/img/orig/TSM-f70117e2.png?t=1722952500&download=true",
     }
 
-    tickers = ["AAPL", "NVDA", "MSFT", "AMZN", "GOOG"]
-
+    tickers = ["AAPL", "NVDA", "MSFT", "AMZN", "GOOG", "2222.SR", "META", "BRK-B", "TSM"]
     selected_ticker = st.selectbox("Sélectionnez un symbole boursier", tickers)
 
     company = yf.Ticker(selected_ticker)
@@ -108,11 +113,11 @@ def main():
     if logo_url:
         st.markdown(f'<div class="circle-logo"><img src="{logo_url}" alt="Logo"></div>', unsafe_allow_html=True)
 
-    st.write(f"### {company.info.get('shortName', selected_ticker)}")
-    st.write("Les données ci-dessus montrent les prix de clôture des actions en dollars pour les derniers jours.")
-
-
+    st.write(f"#### {company.info.get('shortName', selected_ticker)}")
+    st.write("Les données ci-dessus montrent les prix des actions en dollars pour les derniers jours.")
+    st.write(" ")
     st.dataframe(data.style.highlight_max(axis=0))
+    st.write("Le graphique suivant montre l'évolution des prix des actions en dollars sur les deux dernières années")
     st.line_chart(historical_data['Close'], color="#ea2071")
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ def main():
 
     # Refund request history
     st.write("### Historique des remboursements")
-    st.write("1. Erreur de facturation - 10 janvier 2023 - Remboursé: 100 000,00 XOF.")
+    st.write("1. Erreur de facturation - 10 janvier 2025 - Remboursé: 100 000,00 XOF.")
 
 if __name__ == "__main__":
     main()
