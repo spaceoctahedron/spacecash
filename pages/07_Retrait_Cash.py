@@ -1,6 +1,7 @@
 import streamlit as st
 
 def main():
+    st.logo("assets/logo.png")
     st.title("Retrait Cash")
     st.subheader("Effectuer un retrait d'argent")
 

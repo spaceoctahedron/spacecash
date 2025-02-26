@@ -1,6 +1,7 @@
 import streamlit as st
 
 def main():
+    st.logo("assets/logo.png")
     st.title("Marchand")
     st.subheader("Accédez aux services marchands")
 

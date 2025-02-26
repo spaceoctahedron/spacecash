@@ -1,6 +1,7 @@
 import streamlit as st
 
 def main():
+    st.logo("assets/logo.png")
     st.title("Mes Comptes")
     st.subheader("Bienvenue sur votre espace comptes")
 
